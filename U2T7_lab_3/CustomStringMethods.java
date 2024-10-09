@@ -58,17 +58,20 @@ public class CustomStringMethods {
 
         // added more code 
 
-
-
-          /* Client provides a single word as orig and the method returns a String that represents orig
+/* Client provides a single word as orig and the method returns a String that represents orig
             written in “Pig Latin”, which means that the first letter of the word is removed from the front and
             added to the end, and then “ay” is appended.
 
              Example:  If orig is bananas, then the method returns the “Pig Latin” version, ananasbay
   */
-  public String pigLatin(String orig) {
-    
-  }
+  
+    public String pigLatin(String orig) {
+    String orig1 = orig.substring(0,1);
+    orig = orig.substring(1);
+    String add = "ay";
+    return orig + orig1 + add;                       
+}            
+
 
   /**Client provides myString and removeIdx and method returns a new String with the character
             located at removeIdx in myString removed.  If removeIdx is outside the bounds of myString,
@@ -82,7 +85,19 @@ public class CustomStringMethods {
            this method should return the string "Halloween" (the original myString unchanged).
        */
   public String removeCharacter(String myString, int removeIdx) {
-
+        if (myString.length()-1 >= removeIdx){
+            String Stringfirst = myString.substring(0,removeIdx);
+            String StringSecond = myString.substring(removeIdx+1);
+            return Stringfirst+ StringSecond;
+        }else {
+            return myString;
+        }
+        
+          
+        
+        
+        
+        
   }
 
   /**Client provides orig, insertText, and searchStr, and the method returns a new String where
@@ -99,7 +114,19 @@ public class CustomStringMethods {
             this method would return the String "ghostBOO!" (since searchStr is not found in orig).
   */
   public String insertAt(String orig, String insertText, String searchStr) {
-    
+        String mystring = orig;
+       String  add = insertText;
+        int idxFinder = mystring.indexOf(searchStr);
+        if (idxFinder == -1){
+            return mystring + add;
+        } else {
+            String myStringStart= mystring.substring(0,idxFinder);
+        String myStringEnd = mystring.substring(idxFinder);
+        add = myStringStart + add + myStringEnd;
+        return add;
+        }
+        
+       
   }
 
   /**Client provides myString and the method returns a new String with the last numToCap characters in
@@ -114,7 +141,15 @@ public class CustomStringMethods {
              "GigantiC!!"
   */
   public String endUp(String myString, int numToCap){
-    
+        
+        int Stringlength = myString.length();
+        if (numToCap >Stringlength){
+            return myString.toUpperCase();
+        }else {
+            String endingStr = myString.substring(Stringlength -numToCap);
+            return myString.substring(0,Stringlength -numToCap) + endingStr.toUpperCase();
+        }
+     
   }
 
   /**Client provides myString and this method should return a String with all characters in myString
@@ -128,9 +163,23 @@ public class CustomStringMethods {
             because the first letter of myString, "h", is a lowercase letter.
   */
   public String yellOrWhisper(String myString) {
+        String firstLetter = myString.substring(0,1);
+        String firstLettercaptilized = firstLetter.toUpperCase();
+        if (firstLettercaptilized.equals(firstLetter)){
+            return myString.toUpperCase();
+
+        }else {
+            return myString.toLowerCase();
+        }
+        
     
-  }
-}
+    }
+  } 
+
+
+
+          
+
 
   
-}
+
